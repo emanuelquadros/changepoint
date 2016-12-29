@@ -9,7 +9,7 @@ from time import time
 from glob import glob
 from functools import partial
 import numpy as np
-import cPickle as pickle
+import pickle
 
 from joblib import Parallel, delayed
 import more_itertools
