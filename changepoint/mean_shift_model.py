@@ -75,34 +75,34 @@ class MeanShiftModel(object):
         return stats_ts, pvals, nums
 
     def test(self):
-        print "Testing a time series with a significant mean shift"
+        print("Testing a time series with a significant mean shift")
         ts = np.hstack([np.random.normal(0.0, 1.0, 50), np.random.normal(5.0, 1.0, 50)])
         x = np.arange(0, len(ts))
         stat_ts_func = self.compute_balance_mean_ts
-        print "Using NULL"
+        print("Using NULL")
         null_ts_func = partial(self.generate_null_timeseries, mu=0.0, sigma=1.0)
         stats_ts, pvals, nums = self.get_ts_stats_significance(
             x, ts, stat_ts_func, null_ts_func,
             label_ts='test', B=1000)
-        print "Minimum p-value is", np.min(pvals), pvals
+        print("Minimum p-value is", np.min(pvals), pvals)
 
-        print "Using permutation"
+        print("Using permutation")
         null_ts_func = self.shuffle_timeseries
         stats_ts, pvals, nums = self.get_ts_stats_significance(x, ts, stat_ts_func, null_ts_func, label_ts='test', B=1000)
-        print "Minimum p-value is", np.min(pvals), pvals
+        print("Minimum p-value is", np.min(pvals), pvals)
 
-        print "************************************************************************"
+        print("************************************************************************")
 
-        print "Testing a time series with no mean shift"
+        print("Testing a time series with no mean shift")
         ts = np.random.normal(0.0, 0.000001, 1000)
         x = np.arange(0, len(ts))
         stat_ts_func = self.compute_balance_mean_ts
-        print "Using NULL"
+        print("Using NULL")
         null_ts_func = partial(self.generate_null_timeseries, mu=0.0, sigma=1.0)
         stats_ts, pvals, nums = self.get_ts_stats_significance(x, ts, stat_ts_func, null_ts_func, label_ts='test', B=1000)
-        print "Minimum p-value is", np.min(pvals), pvals
+        print("Minimum p-value is", np.min(pvals), pvals)
 
-        print "Using permutation"
+        print("Using permutation")
         null_ts_func = self.shuffle_timeseries
         stats_ts, pvals, nums = self.get_ts_stats_significance(x, ts, stat_ts_func, null_ts_func, label_ts='test', B=1000)
-        print "Minimum p-value is", np.min(pvals), pvals
+        print("Minimum p-value is", np.min(pvals), pvals)
