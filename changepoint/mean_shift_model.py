@@ -6,8 +6,8 @@ import more_itertools
 import os
 
 from functools import partial
-from utils.ts_stats import ts_stats_significance
-from utils.ts_stats import parallelize_func
+from .utils.ts_stats import ts_stats_significance
+from .utils.ts_stats import parallelize_func
 
 __author__ = "Vivek Kulkarni"
 __email__ = "viveksck@gmail.com"
